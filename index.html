@@ -1,53 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>VWO A/B Test Demo</title>
 
-  <!-- VWO SmartCode (REPLACE ACCOUNT ID) -->
-  <script type="text/javascript">
-  window._vwo_code = window._vwo_code || [];
-  (function(){
-    var account_id = 1175011;   // your account id
-    var settings_tolerance = 2000;
-    var library_tolerance = 2500;
-    var hide_element = 'body';
-    var d = document, code = d.createElement('script');
-    code.src = 'https://dev.visualwebsiteoptimizer.com/j.php?a=' + account_id;
-    d.getElementsByTagName('head')[0].appendChild(code);
+  <!-- Start VWO Async SmartCode -->
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+  <script type='text/javascript' id='vwoCode'>
+  window._vwo_code ||
+  (function () {
+    var w=window,
+    d=document;
+    var account_id=1175011,
+    version=2.2,
+    settings_tolerance=2000,
+    hide_element='body',
+    hide_element_style='opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important';
+    if(f=!1,v=d.querySelector('#vwoCode'),cc={},-1<d.URL.indexOf('_vwo_disable_')||w._vwo_code)return;
+    try{var e=JSON.parse(localStorage.getItem('vwo'+account_id+'_config'));cc=e&&'object'==typeof e?e:{}}catch(e){}
+    function r(t){try{return decodeURIComponent(t)}catch(e){return t}}
+    var s=function(){var e={combination:[],combinationChoose:[],split:[],exclude:[],uuid:null,consent:null,optOut:null},t=d.cookie||'';if(!t)return e;
+    for(var n,i,o=/(?:^|;\s*)(?:(vis_opt_exp(\d+)combi=([^;]*))|(_vis_opt_exp(\d+)combi_choose=([^;]*))|(_vis_opt_exp(\d+)split=([^:;]*))|(_vis_opt_exp(\d+)_exclude=[^;]*)|(_vis_opt_out=([^;]))|(_vwo_global_opt_out=[^;])|(_vwo_uuid=([^;]))|(_vwo_consent=([^;])))/g;null!==(n=o.exec(t));)
+    try{n[1]?e.combination.push({id:n[2],value:r(n[3])}):n[4]?e.combinationChoose.push({id:n[5],value:r(n[6])}):n[7]?e.split.push({id:n[8],value:r(n[9])}):n[10]?e.exclude.push({id:n[11]}):n[12]?e.optOut=r(n[13]):n[14]?e.optOut=!0:n[15]?e.uuid=r(n[16]):n[17]&&(i=r(n[18]),e.consent=i&&3<=i.length?i.substring(0,3):null)}catch(e){}
+    return e}();
+
+    function i(){
+      var t='a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version+'&ph=1';
+      return t;
+    }
+
+    code={
+      finish:function(){},
+      addScript:function(e){
+        var t=d.createElement('script');
+        t.type='text/javascript';
+        e.src?t.src=e.src:t.text=e.text;
+        d.getElementsByTagName('head')[0].appendChild(t);
+      },
+      load:function(e){
+        var t=d.createElement('script');
+        t.src=e;
+        d.getElementsByTagName('head')[0].appendChild(t);
+      },
+      init:function(){
+        var n='https://dev.visualwebsiteoptimizer.com/j.php?'+i();
+        this.load(n);
+      }
+    };
+    w._vwo_code=code;
+    code.init();
   })();
   </script>
+  <!-- End VWO Async SmartCode -->
 
   <style>
     body {
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       text-align: center;
-      margin-top: 100px;
+      margin-top: 120px;
+      background: #f5f6fa;
+    }
+
+    h1 {
+      margin-bottom: 30px;
     }
 
     #buy-btn {
-      padding: 15px 30px;
+      padding: 15px 35px;
       font-size: 18px;
-      background: blue;
+      background: #2563eb;
       color: white;
       border: none;
+      border-radius: 6px;
       cursor: pointer;
+    }
+
+    #buy-btn:hover {
+      background: #1d4ed8;
+    }
+
+    #result {
+      margin-top: 25px;
+      font-size: 18px;
+      color: green;
     }
   </style>
 </head>
 
 <body>
 
-<h1>Welcome to My Demo Page</h1>
+  <h1>Welcome to My Demo Page</h1>
 
-<button id="buy-btn">Buy Now</button>
+  <button id="buy-btn">Buy Now</button>
 
-<p id="result"></p>
+  <p id="result"></p>
 
-<script>
-document.getElementById("buy-btn").addEventListener("click", function() {
-  document.getElementById("result").innerText = "Goal Fired!";
-});
-</script>
+  <script>
+    document.getElementById("buy-btn").addEventListener("click", function() {
+      document.getElementById("result").innerText = "Goal Fired!";
+    });
+  </script>
 
 </body>
 </html>
