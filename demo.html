@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VWO A/B Test Demo</title>
+
+  <!-- VWO SmartCode (REPLACE ACCOUNT ID) -->
+  <script type="text/javascript">
+  window._vwo_code = window._vwo_code || [];
+  (function(){
+    var account_id = 1175011;   // your account id
+    var settings_tolerance = 2000;
+    var library_tolerance = 2500;
+    var hide_element = 'body';
+    var d = document, code = d.createElement('script');
+    code.src = 'https://dev.visualwebsiteoptimizer.com/j.php?a=' + account_id;
+    d.getElementsByTagName('head')[0].appendChild(code);
+  })();
+  </script>
+
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    #buy-btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      background: blue;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Welcome to My Demo Page</h1>
+
+<button id="buy-btn">Buy Now</button>
+
+<p id="result"></p>
+
+<script>
+document.getElementById("buy-btn").addEventListener("click", function() {
+  document.getElementById("result").innerText = "Goal Fired!";
+});
+</script>
+
+</body>
+</html>
