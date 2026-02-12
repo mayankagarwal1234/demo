@@ -10,25 +10,41 @@
   <script type='text/javascript' id='vwoCode'>
   window._vwo_code ||
   (function () {
-  var w=window,
-  d=document;
-  var account_id=3000675,
-  version=2.2,
-  settings_tolerance=2000,
-  hide_element='body',
-  hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important';
-  /* DO NOT EDIT BELOW THIS LINE */
-  if(f=!1,v=d.querySelector('#vwoCode'),cc={},-1<d.URL.indexOf('__vwo_disable__')||w._vwo_code)return;
-  code={init:function(){
-  var n='https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+
-        '&u='+encodeURIComponent(d.URL)+
-        '&vn='+version+'&ph=1';
-  var s=d.createElement('script');
-  s.src=n;
-  d.head.appendChild(s);
-  }};
-  w._vwo_code=code;
-  code.init();
+    var w = window, d = document;
+    var account_id = 3000675,
+        version = 2.2,
+        settings_tolerance = 2000,
+        hide_element = 'body',
+        hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important';
+
+    if (w._vwo_code) return;
+
+    var style = d.createElement('style');
+    style.id = '_vis_opt_path_hides';
+    style.type = 'text/css';
+    style.appendChild(d.createTextNode(hide_element + '{' + hide_element_style + '}'));
+    d.head.appendChild(style);
+
+    var code = {
+      init: function () {
+        var s = d.createElement('script');
+        s.src = 'https://dev.visualwebsiteoptimizer.com/j.php?a=' + account_id +
+                '&u=' + encodeURIComponent(d.URL) +
+                '&vn=' + version +
+                '&ph=1&x=true';
+        s.async = true;
+        d.head.appendChild(s);
+      }
+    };
+
+    w._vwo_code = code;
+    code.init();
+
+    setTimeout(function () {
+      var el = d.getElementById('_vis_opt_path_hides');
+      if (el) el.parentNode.removeChild(el);
+    }, settings_tolerance);
+
   })();
   </script>
   <!-- End VWO Async SmartCode -->
@@ -78,12 +94,12 @@
   <p id="result"></p>
 
   <script>
-    document.getElementById("buy-btn").addEventListener("click", function() {
+    document.getElementById("buy-btn").addEventListener("click", function () {
       document.getElementById("result").innerText = "Goal Fired!";
 
-      // VWO Goal Tracking
+      // Track VWO Goal
       window.VWO = window.VWO || [];
-      VWO.push(['track.goalConversion', 1]); // Replace 1 with actual Goal ID
+      VWO.push(['track.goalConversion', 1]); // Replace 1 with your Goal ID
     });
   </script>
 
